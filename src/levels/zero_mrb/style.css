@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100;400;900&family=Rubik+Bubbles&display=swap');
+
 
 html,
 body {
@@ -30,9 +30,9 @@ body {
 }
 
 .heading {
-    font-family: 'Rubik Bubbles', cursive;
+    font-family: 'verdana';
     font-size: 80px;
-    color: red;
+    color: goldenrod;
 }
 
 p {

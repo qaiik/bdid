@@ -83,29 +83,6 @@ const initDebug = () => {
 }
 const initEnvironment = () => {
     const loader = new GLTFLoader();
-    loader.load('./scene.gltf', function(gltf) {
-        gltf.scene.position.set(0, 0, 4)
-        Scene.add(gltf.scene)
-        const matrixWorld = new THREE.Matrix4();
-        const options = {
-            type: TYPE.MESH,
-            fit: FIT.ALL
-        }
-        const mvertices = [];
-        const mmatrices = [];
-        const mindexes = [];
-        iterateGeometries(gltf.scene, {}, (vertexArray, matrixArray, indexArray) => {
-            mvertices.push(vertexArray);
-            mmatrices.push(matrixArray);
-            mindexes.push(indexArray);
-        });
-        console.log(mvertices, mmatrices, mindexes)
-        const shapes = createCollisionShapes(mvertices, mmatrices, mindexes, matrixWorld.elements, options);
-        // let wal1Shape = new Ammo.btBoxShape(new Ammo.btVector3(0.25, 1, 15.25));
-        // wal1Shape.setMargin(0.05);
-        let wal1Shape = shapes[0]
-        window.mnkey = createRigidBody(physicsWorld, gltf.scene, wal1Shape, 0, gltf.scene.position, gltf.scene.quaternion);
-    })
     const wall1 = new THREE.Mesh(new THREE.BoxGeometry(0.5, 2, 30.5), new THREE.MeshStandardMaterial({
         color: "blue"
     }));
@@ -124,10 +101,10 @@ const initEnvironment = () => {
     });
     const matrixWorld = new THREE.Matrix4();
     const options = {
-        type: TYPE.MESH,
-        fit: FIT.ALL
+        type: A.TYPE.MESH,
+        fit: A.FIT.ALL
     }
-    const shapes = createCollisionShapes(vertices, matrices, indexes, matrixWorld.elements, options);
+    const shapes = A.createCollisionShapes(vertices, matrices, indexes, matrixWorld.elements, options);
     // let wal1Shape = new Ammo.btBoxShape(new Ammo.btVector3(0.25, 1, 15.25));
     // wal1Shape.setMargin(0.05);
     console.log(shapes)
